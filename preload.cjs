@@ -1,5 +1,5 @@
-const { contextBridge } = require('electron');
+const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('electronAPI', {
-  // Add any needed IPC methods here
+  resizeWindow: (width, height) => ipcRenderer.send('resize-window', width, height)
 });

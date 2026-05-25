@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 
 function createWindow() {
@@ -10,6 +10,7 @@ function createWindow() {
     useContentSize: true,
     resizable: false,
     maximizable: false,
+    title: 'Pixel Designer',
     backgroundColor: '#1E1E1E',
     autoHideMenuBar: true,
     webPreferences: {
@@ -26,6 +27,13 @@ function createWindow() {
     mainWindow.loadFile(path.join(__dirname, 'dist', 'index.html'));
   }
 }
+
+ipcMain.on('resize-window', (event, width, height) => {
+  const win = BrowserWindow.fromWebContents(event.sender);
+  if (win) {
+    win.setContentSize(Math.ceil(width), Math.ceil(height));
+  }
+});
 
 app.whenReady().then(() => {
   createWindow();

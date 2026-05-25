@@ -16,6 +16,7 @@
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/roboto-mono": "^5.2.9",
+    "lucide-react": "^1.16.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },
@@ -40,7 +41,7 @@
   },
   "build": {
     "appId": "com.markg.pixeldesigner",
-    "productName": "pixel-designer",
+    "productName": "Pixel Designer",
     "directories": {
       "output": "dist-electron"
     },
